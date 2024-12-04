@@ -25,14 +25,17 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:id="@+id/cimDisplay"
             android:layout_height="match_parent" android:text="Teszt"/>
             <TextView
             android:layout_width="wrap_content"
             android:layout_gravity="end"
+                android:id="@+id/szerzoDisplay"
             android:gravity="center"
             android:layout_height="match_parent" android:text="Szerző"/>            <TextView
             android:layout_width="wrap_content"
             android:layout_gravity="end"
+            android:id="@+id/oldalszamDisplay"
             android:gravity="center"
             android:layout_height="match_parent" android:text="Oldalszám"/>
         </LinearLayout>
