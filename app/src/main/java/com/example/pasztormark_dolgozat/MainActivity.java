@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -45,8 +46,26 @@ public class MainActivity extends AppCompatActivity {
 
         submitButton.setOnClickListener(view -> {
             String cim = cimEditText.getText().toString();
+            if (cim.isEmpty()) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setMessage("cím nem jó");
+                alert.show();
+                return;
+            }
             String szerzo = szerzoEditText.getText().toString();
+            if (szerzo.isEmpty()) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setMessage("szerző nem jó");
+                alert.show();
+                return;
+            }
             int oldalszam = Integer.parseInt(oldalszamEditText.getText().toString());
+            if (oldalszam < 50) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setMessage("min 50 oldal");
+                alert.show();
+                return;
+            }
             ListViewItem item = new ListViewItem(cim, szerzo, oldalszam);
             ujKonyv.add(item);
             adapter.notifyDataSetChanged();

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/cardView"
 
         tools:ignore="MissingConstraints">
         <LinearLayout
@@ -20,6 +22,7 @@
             android:layout_width="wrap_content"
             android:text="X"
             android:layout_gravity="center"
+            android:id="@+id/torles"
             android:layout_height="wrap_content"/>
         <TextView
             android:layout_width="wrap_content"
@@ -32,12 +35,15 @@
             android:layout_gravity="end"
                 android:id="@+id/szerzoDisplay"
             android:gravity="center"
-            android:layout_height="match_parent" android:text="Szerző"/>            <TextView
-            android:layout_width="wrap_content"
-            android:layout_gravity="end"
-            android:id="@+id/oldalszamDisplay"
-            android:gravity="center"
-            android:layout_height="match_parent" android:text="Oldalszám"/>
+            android:layout_height="match_parent" android:text="Szerző"/>
+
+            <TextView
+                android:id="@+id/oldalszamDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:text="Oldalszám" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
