@@ -1,6 +1,9 @@
 package com.example.pasztormark_dolgozat;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +11,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    private EditText cimEditText;
+    private EditText szerzoEditText;
+    private EditText oldalszamEditText;
+    private Button submitButton;
+    private ListView listView;
+    private ArrayList<ListViewItem> ujKonyv;
+
+    private KonyvAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +32,24 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        cimEditText = findViewById(R.id.cim);
+        szerzoEditText = findViewById(R.id.szerzo);
+        oldalszamEditText = findViewById(R.id.oldalszam);
+        submitButton = findViewById(R.id.submit);
+        listView = findViewById(R.id.lista);
+
+        ujKonyv = new ArrayList<>();
+        adapter = new KonyvAdapter(this, R.layout.listviewitem, ujKonyv);
+        listView.setAdapter(adapter);
+
+        submitButton.setOnClickListener(view -> {
+            String cim = cimEditText.getText().toString();
+            String szerzo = szerzoEditText.getText().toString();
+            int oldalszam = Integer.parseInt(oldalszamEditText.getText().toString());
+            ListViewItem item = new ListViewItem(cim, szerzo, oldalszam);
+            ujKonyv.add(item);
+            adapter.notifyDataSetChanged();
         });
     }
 }
